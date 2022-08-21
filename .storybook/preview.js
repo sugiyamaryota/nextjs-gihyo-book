@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
 // Themeの適用
 addDecorator((story) => (
   <ThemeProvider theme={theme}>
+    <GlobalStyle />
     {story()}
   </ThemeProvider>
 ))
@@ -50,7 +51,7 @@ Object.defineProperty(NextImage, 'default', {
   ),
 })
 
-Object.defineProperty(NextImage, '__esModule', {
-  configurable: true,
-  value: true
-})
+// Object.defineProperty(NextImage, '__esModule', {
+//   configurable: true,
+//   value: true
+// })
