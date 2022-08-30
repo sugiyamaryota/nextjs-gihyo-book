@@ -1,4 +1,4 @@
-/** eslint-disable prettier/prettier */
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 import { Responsive } from 'types'
 import {
@@ -107,7 +107,7 @@ const Button = styled.button<ButtonProps>`
       !backgroundColor &&
         styles.push(
           toPropValue(
-            'backgroundColor',
+            'background-color',
             variants[variant].backgroundColor,
             theme,
           ),

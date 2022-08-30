@@ -65,4 +65,4 @@ Secondary.args = { variant: 'secondary', children: 'Secondary Button' }
 
 // Disabledボタン
 export const Disabled = Template.bind({})
-Disabled.args = { variant: 'disabled', children: 'Disabled Button' }
+Disabled.args = { disabled: true, children: 'Disabled Button' }
