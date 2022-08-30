@@ -18,3 +18,6 @@ export default {
 ```
 
 https://typescriptbook.jp/reference/values-types-variables/type-assertion-as
+
+
+storybookのpropsが機能していないが、まだ分かっていない。
