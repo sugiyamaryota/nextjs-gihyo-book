@@ -100,6 +100,7 @@ const variants = {
  */
 const Button = styled.button<ButtonProps>`
   ${({ variant, color, backgroundColor, pseudoClass, theme }) => {
+    // バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = []
       !color &&
@@ -114,23 +115,23 @@ const Button = styled.button<ButtonProps>`
         )
       !pseudoClass &&
         styles.push(
-          `&:hover{
+          `&:hover {
             ${toPropValue(
               'background-color',
               variants[variant].pseudoClass.hover.backgroundColor,
               theme,
             )}
-        }`.replaceAll('\n', ''),
+          }`.replaceAll('\n', ''),
         )
       !pseudoClass &&
         styles.push(
-          `&:disabled{
+          `&:disabled {
             ${toPropValue(
               'background-color',
               variants[variant].pseudoClass.disabled.backgroundColor,
               theme,
             )}
-        }`.replaceAll('\n', ''),
+          }`.replaceAll('\n', ''),
         )
       return styles.join('\n')
     }
@@ -139,8 +140,7 @@ const Button = styled.button<ButtonProps>`
   ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
   ${(props) => toPropValue('line-height', props.lineHeight, props.theme)}
   ${(props) => toPropValue('color', props.color, props.theme)}
-  ${(props) =>
-    toPropValue('background-color', props.backgroundColor, props.theme)}
+  ${(props) => toPropValue('background-color', props.backgroundColor, props.theme)}
   ${(props) => toPropValue('width', props.width, props.theme)}
   ${(props) => toPropValue('height', props.height, props.theme)}
   ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
@@ -175,7 +175,7 @@ const Button = styled.button<ButtonProps>`
   cursor: pointer;
   outline: 0;
   text-decoration: 'none';
-  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')}
+  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   border-radius: 4px;
   border: none;
 `

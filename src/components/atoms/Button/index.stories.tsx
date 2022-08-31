@@ -8,6 +8,7 @@ export default {
       options: ['primary', 'secondary'],
       control: { type: 'radio' },
       defaultValue: 'primary',
+      // docsに表示する内容を設定
       description: 'ボタンバリアント',
       table: {
         type: { summary: 'primary | secondary' },
