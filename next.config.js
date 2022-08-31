@@ -3,8 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   compiler: (() => {
     let compilerConfig = {
+      // styledComponentsの有効化
       styledComponents: true,
     }
+
     if (process.env.NODE_ENV === 'production') {
       compilerConfig = {
         ...compilerConfig,
@@ -12,6 +14,7 @@ const nextConfig = {
         reactRemoveProperties: { properties: ['^data-testid$'] },
       }
     }
+
     return compilerConfig
   })(),
   async rewrites() {

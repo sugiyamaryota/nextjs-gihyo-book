@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import styled from 'styled-components'
-import Box, {BoxProps} from 'components/layout/Box'
+import Box, { BoxProps } from 'components/layout/Box'
 import type {
   Responsive,
   CSSPropertyAlignItems,
@@ -12,7 +12,7 @@ import type {
   CSSPropertyFlexWrap,
   CSSPropertyAlignSelf,
 } from 'types/styles'
-import {toPropValue} from 'utils/styles'
+import { toPropValue } from 'utils/styles'
 
 type FlexProps = BoxProps & {
   alignItems?: Responsive<CSSPropertyAlignItems>
@@ -46,11 +46,10 @@ const Flex = styled(Box)<FlexProps>`
   ${(props) => toPropValue('justify-self', props.justifySelf, props.theme)}
   ${(props) => toPropValue('align-self', props.alignSelf, props.theme)}
   ${(props) => toPropValue('order', props.order, props.theme)}
-
 `
 
 Flex.defaultProps = {
-    display: 'flex'
+  display: 'flex',
 }
 
 export default Flex

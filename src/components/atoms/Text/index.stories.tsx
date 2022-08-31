@@ -15,10 +15,11 @@ export default {
       ],
       control: { type: 'select' },
       defaultValue: 'medium',
+      // docsに表示する内容を設定
       description: 'テキストバリアント',
       table: {
         type: {
-          summary: 'extraSmall, small, medium, mediumLarge, large, extraLarge',
+          summary: 'extraSmall , small, medium, mediumLarge, large, extraLarge',
         },
         defaultValue: { summary: 'medium' },
       },

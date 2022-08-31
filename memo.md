@@ -21,3 +21,4 @@ https://typescriptbook.jp/reference/values-types-variables/type-assertion-as
 
 
 storybookのpropsが機能していないが、まだ分かっていない。
+packageを同じにしても失敗する。componentsのファイルを揃えても失敗する
