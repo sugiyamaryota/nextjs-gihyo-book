@@ -11,6 +11,9 @@ interface BreadcrumbProps {
   children?: React.ReactNode
 }
 
+/**
+ * パンくずリスト
+ */
 const Breadcrumb = ({ children }: BreadcrumbProps) => {
   return <BreadcrumbRoot as="ol">{children}</BreadcrumbRoot>
 }

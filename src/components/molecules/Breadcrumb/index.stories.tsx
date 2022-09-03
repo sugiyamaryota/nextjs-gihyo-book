@@ -14,8 +14,6 @@ export const Standard = () => (
     <BreadcrumbItem>
       <a href="#">Clothes</a>
     </BreadcrumbItem>
-    <BreadcrumbItem>
-      <a href="#">Item</a>
-    </BreadcrumbItem>
+    <BreadcrumbItem>Item</BreadcrumbItem>
   </Breadcrumb>
 )

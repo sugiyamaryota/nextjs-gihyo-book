@@ -22,6 +22,9 @@ type BadgeIconButton = {
   size?: number | string
 }
 
+/**
+ * バッジ付きアイコンボタン
+ */
 const BadgeIconButton = ({
   icon,
   size = '24px',
