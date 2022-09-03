@@ -3,6 +3,7 @@ import React, { useState, useContext, createContext } from 'react'
 const GlobalSpinnerContext = createContext<boolean>(false)
 const GlobalSpinnerActionsContext = createContext<
   React.Dispatch<React.SetStateAction<boolean>>
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
 >(() => {})
 
 export const useGlobalSpinnerContext = (): boolean =>

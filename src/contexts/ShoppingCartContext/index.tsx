@@ -10,7 +10,9 @@ type ShoppingCartContextType = {
 
 const ShoppingCartContext = React.createContext<ShoppingCartContextType>({
   cart: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   addProductToCart: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   removeProductFromCart: () => {},
 })
 
