@@ -3,46 +3,46 @@ import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from './reducers'
 import type { Product } from 'types'
 
 type ShoppingCartContextType = {
-    cart: Product[]
-    addProductToCart: (product: Product) => void
-    removeProductFromCart: (product: number) => void
+  cart: Product[]
+  addProductToCart: (product: Product) => void
+  removeProductFromCart: (product: number) => void
 }
 
 const ShoppingCartContext = React.createContext<ShoppingCartContextType>({
-    cart: [],
-    addProductToCart: () => {},
-    removeProductFromCart: () => {},
+  cart: [],
+  addProductToCart: () => {},
+  removeProductFromCart: () => {},
 })
 
 export const useShoppingCartContext = (): ShoppingCartContextType =>
   useContext<ShoppingCartContextType>(ShoppingCartContext)
 
 interface ShoppingCartContextProviderProps {
-    children?: React.ReactNode
+  children?: React.ReactNode
 }
 
 export const ShoppingCartContextProvider = ({
-    children,
-}:ShoppingCartContextProviderProps) => {
+  children,
+}: ShoppingCartContextProviderProps) => {
   const products: Product[] = []
   const [cartState, dispatch] = useReducer(shopReducer, products)
 
   const addProductToCart = (product: Product) => {
-    dispatch({ type: ADD_PRODUCT, payload: product})
+    dispatch({ type: ADD_PRODUCT, payload: product })
   }
 
   const removeProductFromCart = (productId: number) => {
-    dispatch({ type: REMOVE_PRODUCT, payload: productId})
+    dispatch({ type: REMOVE_PRODUCT, payload: productId })
   }
   return (
     <ShoppingCartContext.Provider
       value={{
         cart: cartState,
         addProductToCart,
-        removeProductFromCart
+        removeProductFromCart,
       }}
     >
-        {children}
+      {children}
     </ShoppingCartContext.Provider>
   )
 }

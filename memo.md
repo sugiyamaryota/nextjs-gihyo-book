@@ -72,3 +72,7 @@ ourUsers.getUsers()
 ```
 
 call,applyも挙動としては同じだが、新しい関数を作成するのではなく、実行だけする
+
+
+useContext・useReducerの使用方法を解っていない
+useSWRも解っていない
