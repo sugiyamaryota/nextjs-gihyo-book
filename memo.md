@@ -76,3 +76,13 @@ call,applyも挙動としては同じだが、新しい関数を作成するの�
 
 useContext・useReducerの使用方法を解っていない
 useSWRも解っていない
+
+useSWRについて
+- データ取得関連操作のReactHooksライブラリ
+- vercelが提供（Next.jsの開発元
+APIリクエストとエラーハンドリング、それに伴うuseStateの処理周りがシンプルに記述できる
+APIリクエストする高階関数を定義して抽象化するデザインパターンを利用していることがあったが、
+useSWRを使用すればもっとシンプルにできそう
+Reduxと併用する場合も、わりとイメージはできる
+https://swr.vercel.app/ja
+https://zenn.dev/mast1ff/articles/5b48a87242f9f0
