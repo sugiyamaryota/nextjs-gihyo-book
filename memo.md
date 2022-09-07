@@ -1,3 +1,4 @@
+# TypeScript Basic
 
 以下のエラーを知る。
 ```tsx
@@ -20,8 +21,12 @@ export default {
 https://typescriptbook.jp/reference/values-types-variables/type-assertion-as
 
 
+# Storybook
+
 storybookのpropsが機能していないが、まだ分かっていない。
 packageを同じにしても失敗する。componentsのファイルを揃えても失敗する
+
+# JavaScript Basic
 
 storybookでも登場する「bind」をあまり理解していない。
 まずTemplateという特定のpropsを持つjsxを返す関数を作成する。
@@ -73,9 +78,9 @@ ourUsers.getUsers()
 
 call,applyも挙動としては同じだが、新しい関数を作成するのではなく、実行だけする
 
+# SWR / ReactHooks Library
 
-useContext・useReducerの使用方法を解っていない
-useSWRも解っていない
+useSWRを解っていない
 
 useSWRについて
 - データ取得関連操作のReactHooksライブラリ
@@ -86,3 +91,8 @@ useSWRを使用すればもっとシンプルにできそう
 Reduxと併用する場合も、わりとイメージはできる
 https://swr.vercel.app/ja
 https://zenn.dev/mast1ff/articles/5b48a87242f9f0
+
+# ReactHooks
+
+createContext・useContext・useReducerの使用方法をあまり解っていない
+`_app.tsx`で記述するProvider関連はネストしていくのが定石なのかな。
