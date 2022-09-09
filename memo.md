@@ -96,3 +96,15 @@ https://zenn.dev/mast1ff/articles/5b48a87242f9f0
 
 createContext・useContext・useReducerの使用方法をあまり解っていない
 `_app.tsx`で記述するProvider関連はネストしていくのが定石なのかな。
+
+# NextJS
+
+getStaticPaths
+用途：動的なURL（idなど）を静的サイトジェネレータで生成する際に使用する
+https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
+
+getStaticProps
+用途：動的なデータを利用時に静的サイトジェネレータで生成する際に使用する
+ページで表示処理に必要なデータ、例えば商品詳細のデータを表示する際は、APIをリクエストして事前にデータを取得しておく必要があるが
+その事前データ取得処理を行わせる。取得したデータをページ表示側の関数にpropsとして渡す。
+https://nextjs.org/docs/basic-features/data-fetching/get-static-props
