@@ -108,3 +108,13 @@ getStaticProps
 ページで表示処理に必要なデータ、例えば商品詳細のデータを表示する際は、APIをリクエストして事前にデータを取得しておく必要があるが
 その事前データ取得処理を行わせる。取得したデータをページ表示側の関数にpropsとして渡す。
 https://nextjs.org/docs/basic-features/data-fetching/get-static-props
+
+[id].tsxについて
+動的ルート。idなどデータによって変わりうるURL。
+https://nextjs.org/docs/routing/dynamic-routes
+
+[[...slug]].tsxについて
+複数の階層にまたがる動的なパスに対応する。
+https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
+
+https://zenn.dev/terrierscript/articles/2021-04-29-next-js-props-catch-all-routes
