@@ -118,3 +118,23 @@ https://nextjs.org/docs/routing/dynamic-routes
 https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
 https://zenn.dev/terrierscript/articles/2021-04-29-next-js-props-catch-all-routes
+
+# Test
+
+## Jest
+
+`jest.Mock`は型定義
+
+jest.fn()
+モック関数。スパイ。
+https://jestjs.io/ja/docs/mock-function-api/#jestfnimplementation
+
+## React Testing Library
+
+RenderResult
+https://testing-library.com/docs/angular-testing-library/api/#renderresult
+
+fireEvent
+https://testing-library.com/docs/guide-events/
+eventの操作はuserEventの使用を推奨している
+https://testing-library.com/docs/user-event/intro
