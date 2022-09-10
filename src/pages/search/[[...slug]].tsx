@@ -18,6 +18,7 @@ const Anchor = styled(Text)`
     text-decoration: underline;
   }
 `
+
 const categoryNameDict: Record<Category, string> = {
   book: '本',
   shoes: 'シューズ',
@@ -26,9 +27,11 @@ const categoryNameDict: Record<Category, string> = {
 
 const SearchPage: NextPage = () => {
   const router = useRouter()
+  // 商品のカテゴリーをクエリから取得
   const slug: Category[] = Array.isArray(router.query.slug)
     ? (router.query.slug as Category[])
     : []
+  // 商品の状態をクエリから取得
   const conditions = (() => {
     if (Array.isArray(router.query.condition)) {
       return router.query.condition as Condition[]
@@ -38,6 +41,7 @@ const SearchPage: NextPage = () => {
       return []
     }
   })()
+
   const handleChange = (selected: string[]) => {
     router.push({
       pathname: router.pathname,
@@ -47,6 +51,7 @@ const SearchPage: NextPage = () => {
       },
     })
   }
+
   return (
     <Layout>
       <Box
@@ -73,6 +78,7 @@ const SearchPage: NextPage = () => {
                 <a>検索</a>
               </Link>
             </BreadcrumbItem>
+            {/* パンくずリストを選択したカテゴリから生成 */}
             {slug.slice(0, slug.length - 1).map((category, i) => (
               <BreadcrumbItem key={i}>
                 <Link href={`/search/${slug.slice(0, i + 1).join('/')}`}>
@@ -80,7 +86,7 @@ const SearchPage: NextPage = () => {
                 </Link>
               </BreadcrumbItem>
             ))}
-            {slug.length === 0 && <BreadcrumbItem>すべて</BreadcrumbItem>}
+            {slug.length == 0 && <BreadcrumbItem>すべて</BreadcrumbItem>}
             {slug.length > 0 && (
               <BreadcrumbItem>
                 {categoryNameDict[slug[slug.length - 1]] ?? 'Unknown'}

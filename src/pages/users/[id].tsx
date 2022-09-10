@@ -27,9 +27,11 @@ const UserPage: NextPage<UserPageProps> = ({
   products,
 }: UserPageProps) => {
   const router = useRouter()
+
   if (router.isFallback) {
     return <div>Loading...</div>
   }
+
   return (
     <Layout>
       <Flex
@@ -53,18 +55,18 @@ const UserPage: NextPage<UserPageProps> = ({
           <Box>
             <Box marginBottom={1}>
               {/*
-                    ユーザープロファイルコンテナ
-                    ユーザー情報を表示する。useUserで常に最新のデータを取得する。
-                  */}
+                ユーザープロファイルコンテナ
+                ユーザー情報を表示する。useUserで常に最新のデータを取得する。
+              */}
               <UserProfileContainer userId={id} user={user} />
             </Box>
             <Box marginBottom={1}>
               <Separator />
             </Box>
             {/*
-                  ユーザー商品カードリストコンテナ
-                  ユーザーが所持する商品カードリストを表示する。useSearchで常に最新のデータを取得する。
-                */}
+              ユーザー商品カードリストコンテナ
+              ユーザーが所持する商品カードリストを表示する。useSearchで常に最新のデータを取得する。
+            */}
             <UserProductCardListContainer userId={id} products={products} />
           </Box>
         </Box>
@@ -79,6 +81,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
   const users = await getAllUsers(context)
   const paths = users.map((u) => `/users/${u.id}`)
+
   return { paths, fallback: true }
 }
 
@@ -86,10 +89,13 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const context: ApiContext = {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   }
+
   if (!params) {
     throw new Error('params is undefined')
   }
 
+  // ユーザー情報と ユーザーの所持する商品を取得し、静的ページを作成
+  // 10秒でrevalidateな状態にし、静的ページを更新する
   const userId = Number(params.id)
   const [user, products] = await Promise.all([
     getUser(context, { id: userId }),

@@ -39,14 +39,20 @@ const ProductPage: NextPage<ProductPageProps> = ({
   product: initial,
 }: ProductPageProps) => {
   const router = useRouter()
+  // 商品
   const data = useProduct(context, { id, initial })
+
+  // カートに追加したら、自動的にカートページに遷移する
   const handleAddToCartButtonClick = () => {
     router.push('/cart')
   }
+
   if (router.isFallback) {
     return <div>Loading...</div>
   }
+
   const product = data.product ?? initial
+
   return (
     <Layout>
       <Flex
@@ -134,8 +140,13 @@ const ProductPage: NextPage<ProductPageProps> = ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const context: ApiContext = {
+    apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
+  }
+  // 商品からパスを生成
   const products = await getAllProducts(context)
   const paths = products.map((p) => `/products/${p.id}`)
+
   return { paths, fallback: true }
 }
 
@@ -150,6 +161,8 @@ export const getStaticProps: GetStaticProps = async ({
     throw new Error('params is undefined')
   }
 
+  // 商品を取得し、静的ページを作成
+  // 10秒でstaleな状態にし、静的ページを更新する
   const productId = Number(params.id)
   const product = await getProduct(context, { id: productId })
 

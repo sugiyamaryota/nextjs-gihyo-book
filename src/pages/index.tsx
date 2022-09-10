@@ -16,6 +16,7 @@ const HomePage: NextPage<HomePageProps> = ({
   clothesProducts,
   shoesProducts,
 }: HomePageProps) => {
+  // 商品カードカルーセルをレンダリング
   const renderProductCardCarousel = (products: Product[]) => {
     return (
       <ProductCardCarousel>
@@ -37,6 +38,7 @@ const HomePage: NextPage<HomePageProps> = ({
       </ProductCardCarousel>
     )
   }
+
   return (
     <Layout>
       <Flex padding={2} justifyContent="center" backgroundColor="primary">
@@ -111,11 +113,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const context: ApiContext = {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   }
+  // 各商品のトップ6個を取得し、静的ページを作成
+  // 60秒でrevalidateな状態にし、静的ページを更新する
   const [clothesProducts, bookProducts, shoesProducts] = await Promise.all([
     getAllProducts(context, { category: 'clothes', limit: 6, page: 1 }),
     getAllProducts(context, { category: 'book', limit: 6, page: 1 }),
     getAllProducts(context, { category: 'shoes', limit: 6, page: 1 }),
   ])
+
   return {
     props: {
       clothesProducts,
