@@ -11,12 +11,17 @@ import { useAuthGaurd } from 'utils/hooks'
 const SellPage: NextPage = () => {
   const router = useRouter()
   const { authUser } = useAuthContext()
+
   const handleSave = (err?: Error) => {
     if (authUser && !err) {
+      // 成功したら、ユーザーページに移動
       router.push(`/users/${authUser.id}`)
     }
   }
+
+  // 認証ガード
   useAuthGaurd()
+
   return (
     <Layout>
       <Flex
@@ -43,9 +48,9 @@ const SellPage: NextPage = () => {
           </Box>
           <Box width="100%">
             {/*
-                商品投稿フォームコンテナ
-                商品情報を入力し、プロダクトAPIを通じて商品を保存
-              */}
+              商品投稿フォームコンテナ
+              商品情報を入力し、プロダクトAPIを通じて商品を保存
+            */}
             <ProductFormContainer onSave={handleSave} />
           </Box>
         </Flex>

@@ -1,32 +1,33 @@
+// typesは後ほど定義
 import { ApiContext, User } from 'types'
-
+// 先ほど定義したsrc/utils/index.tsから読み込み
 import { fetcher } from 'utils'
 
 export type SigninParams = {
   /**
    * ユーザー名
-   * サンプルユーザーのユーザー名は"user"
+   * サンプルユーザーのユーザー名は "user"
    */
   username: string
   /**
    * パスワード
-   * サンプルユーザーのパスワードは"password"
+   * サンプルユーザーのパスワードは "password"
    */
   password: string
 }
 
 /**
  * 認証API（サインイン）
- * @param content APIコンテキスト
+ * @param context APIコンテキスト
  * @param params パラメータ
  * @returns ログインユーザー
  */
 const signin = async (
-  content: ApiContext,
+  context: ApiContext,
   params: SigninParams,
 ): Promise<User> => {
   return await fetcher(
-    `${content.apiRootUrl.replace(/\/$/g, '')}/auth/signin`,
+    `${context.apiRootUrl.replace(/\/$/g, '')}/auth/signin`,
     {
       method: 'POST',
       headers: {

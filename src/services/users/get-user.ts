@@ -19,17 +19,17 @@ const getUser = async (
   { id }: GetUserParams,
 ): Promise<User> => {
   /**
-    // ユーザーAPI
-    // サンプルレスポンス
-    {
-        "id": "1",
-        "username": "taketo",
-        "displayName": "taketo Yoshida",
-        "email": "taketo@example.com",
-        "profileImageUrl": "/users/1.png",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-    }
-     */
+  // ユーザーAPI
+  // サンプルレスポンス
+  {
+    "id": "1",
+    "username": "taketo",
+    "displayName": "Taketo Yoshida",
+    "email": "taketo@example.com",
+    "profileImageUrl": "/users/1.png",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+  }
+   */
   return await fetcher(
     `${context.apiRootUrl.replace(/\/$/g, '')}/users/${id}`,
     {

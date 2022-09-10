@@ -11,10 +11,19 @@ const context: ApiContext = {
 }
 
 interface ProductCardListContainerProps {
+  /**
+   * 検索クエリ - カテゴリ
+   */
   category?: Category
+  /**
+   * 検索クエリ - 商品の状態
+   */
   conditions?: Condition[]
 }
 
+/**
+ * 商品カードリストコンテナ
+ */
 const ProductCardListContainer = ({
   category,
   conditions,
@@ -23,6 +32,7 @@ const ProductCardListContainer = ({
     category,
     conditions,
   })
+
   return (
     <ProductCardList>
       {/* ロード中はレクトローダーを表示 */}

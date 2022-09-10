@@ -9,14 +9,22 @@ const context: ApiContext = {
 }
 
 interface ProductFormContainerProps {
+  /**
+   * 商品が保存された時のイベントハンドラ
+   */
   onSave?: (error?: Error, product?: Product) => void
 }
 
+/**
+ * 商品投稿フォームコンテナ
+ */
 const ProductFormContainer = ({ onSave }: ProductFormContainerProps) => {
   const { authUser } = useAuthContext()
   const setGlobalSpinner = useGlobalSpinnerActionsContext()
+  // 出品ボタンを押した時
   const handleSave = async (data: ProductFormData) => {
     if (!authUser) return
+
     const product = {
       image: data.image,
       title: data.title,
@@ -28,8 +36,10 @@ const ProductFormContainer = ({ onSave }: ProductFormContainerProps) => {
       blurDataUrl: '',
       owner: authUser,
     }
+
     try {
       setGlobalSpinner(true)
+      // プロダクトAPIで商品を追加する
       const ret = await addProduct(context, { product })
       onSave && onSave(undefined, ret)
     } catch (err: unknown) {
@@ -41,6 +51,7 @@ const ProductFormContainer = ({ onSave }: ProductFormContainerProps) => {
       setGlobalSpinner(false)
     }
   }
+
   return <ProductForm onProductSave={handleSave} />
 }
 

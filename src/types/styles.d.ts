@@ -49,7 +49,7 @@ export type CSSPropertyAlignItems =
 
 export type CSSPropertyAlignContent =
   | CSSPropertyGlobals
-  | ContentPosition
+  | ContentDistribution
   | 'center'
   | 'end'
   | 'flex-end'
@@ -61,8 +61,8 @@ export type CSSPropertyAlignContent =
 
 export type CSSPropertyJustifyItems =
   | CSSPropertyGlobals
-  | ContentPosition
-  | 'center'
+  | SelfPosition
+  | 'baseline'
   | 'left'
   | 'legacy'
   | 'normal'
@@ -72,6 +72,7 @@ export type CSSPropertyJustifyItems =
 
 export type CSSPropertyJustifyContent =
   | CSSPropertyGlobals
+  | ContentDistribution
   | ContentPosition
   | 'left'
   | 'normal'

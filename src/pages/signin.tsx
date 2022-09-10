@@ -8,13 +8,18 @@ import SigninFormContainer from 'containers/SigninFormContainer'
 
 const SigninPage: NextPage = () => {
   const router = useRouter()
+  // 認証後のイベントハンドラ
   const handleSignin = async (err?: Error) => {
     if (!err) {
-      const redirectTo = (router.query['redirect_to'] as string) ?? '/'
-      console.log('Redirecting', redirectTo)
-      await router.push(redirectTo)
+      // サインインに成功し、クエリが指定されている場合はそのURLに移動。
+      // デフォルトはトップページに移動。
+      const redurectTo = (router.query['redirect_to'] as string) ?? '/'
+
+      console.log('Redirecting', redurectTo)
+      await router.push(redurectTo)
     }
   }
+
   return (
     <Layout>
       <Flex
@@ -34,6 +39,11 @@ const SigninPage: NextPage = () => {
             <AppLogo />
           </Box>
           <Box width="100%">
+            {/*
+              サインインフォームコンテナ
+              SigninFormのユーザー名・パスワードから認証APIを呼び出し、
+              onSigninコールバックが呼び出される
+            */}
             <SigninFormContainer onSignin={handleSignin} />
           </Box>
         </Flex>

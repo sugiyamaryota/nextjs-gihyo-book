@@ -5,9 +5,12 @@ import { useAuthContext } from 'contexts/AuthContext'
 export const useAuthGaurd = (): void => {
   const router = useRouter()
   const { authUser, isLoading } = useAuthContext()
+
   useEffect(() => {
+    // ユーザーが取得できない場合はサインインページにリダイレクト
     if (!authUser && !isLoading) {
       const currentPath = router.pathname
+
       router.push({
         pathname: '/signin',
         query: {

@@ -10,6 +10,7 @@ import CartContainer from 'containers/CartContainer'
 import { useAuthGaurd } from 'utils/hooks'
 
 const CartPage: NextPage = () => {
+  // 認証ガード
   useAuthGaurd()
 
   return (
@@ -35,9 +36,9 @@ const CartPage: NextPage = () => {
               カート
             </Text>
             {/*
-                  カートコンテナ
-                  カートの中にある商品を表示、購入、削除
-                */}
+              カートコンテナ
+              カートの中にある商品を表示、購入、削除
+            */}
             <CartContainer />
           </Box>
         </Box>

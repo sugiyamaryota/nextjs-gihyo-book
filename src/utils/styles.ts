@@ -32,7 +32,7 @@ const BREAKPOINTS: { [key: string]: string } = {
  * @param propKey CSSプロパティ
  * @param prop Responsive型
  * @param theme AppTheme
- * @returns CSSプロパティとその値（ex. background-color: white）
+ * @returns CSSプロパティとその値 (ex. background-color: white;)
  */
 export function toPropValue<T>(
   propKey: string,
@@ -40,11 +40,12 @@ export function toPropValue<T>(
   theme?: AppTheme,
 ) {
   if (prop === undefined) return undefined
+
   if (isResponsivePropType(prop)) {
     const result = []
     for (const responsiveKey in prop) {
       if (responsiveKey === 'base') {
-        //デフォルトのスタイル
+        // デフォルトのスタイル
         result.push(
           `${propKey}: ${toThemeValueIfNeeded(
             propKey,
@@ -58,6 +59,7 @@ export function toPropValue<T>(
         responsiveKey === 'lg' ||
         responsiveKey === 'xl'
       ) {
+        // メディアクエリでのスタイル
         const breakpoint = BREAKPOINTS[responsiveKey]
         const style = `${propKey}: ${toThemeValueIfNeeded(
           propKey,
@@ -70,7 +72,7 @@ export function toPropValue<T>(
     return result.join('\n')
   }
 
-  return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme)}`
+  return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme)};`
 }
 
 const SPACE_KEYS = new Set([
@@ -87,7 +89,7 @@ const SPACE_KEYS = new Set([
 ])
 const COLOR_KEYS = new Set(['color', 'background-color'])
 const FONT_SIZE_KEYS = new Set(['font-size'])
-const LINE_SPACING_KEYS = new Set(['line-spacing'])
+const LINE_SPACING_KEYS = new Set(['letter-spacing'])
 const LINE_HEIGHT_KEYS = new Set(['line-height'])
 
 /**
@@ -114,26 +116,27 @@ function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: AppTheme) {
     return theme.colors[value]
   } else if (
     theme &&
-    theme.colors &&
+    theme.fontSizes &&
     FONT_SIZE_KEYS.has(propKey) &&
     isFontSizeThemeKeys(value, theme)
   ) {
     return theme.fontSizes[value]
   } else if (
     theme &&
-    theme.colors &&
+    theme.letterSpacings &&
     LINE_SPACING_KEYS.has(propKey) &&
     isLetterSpacingThemeKeys(value, theme)
   ) {
     return theme.letterSpacings[value]
   } else if (
     theme &&
-    theme.colors &&
+    theme.lineHeights &&
     LINE_HEIGHT_KEYS.has(propKey) &&
     isLineHeightThemeKeys(value, theme)
   ) {
     return theme.lineHeights[value]
   }
+
   return value
 }
 
