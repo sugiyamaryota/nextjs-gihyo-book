@@ -129,6 +129,13 @@ jest.fn()
 モック関数。スパイ。
 https://jestjs.io/ja/docs/mock-function-api/#jestfnimplementation
 
+
+`expect().toHaveBeenCalledTimes(number)`
+https://jestjs.io/ja/docs/expect#tohavebeencalledtimesnumber
+
+matchers
+https://jestjs.io/ja/docs/using-matchers
+
 ## React Testing Library
 
 RenderResult
@@ -138,3 +145,7 @@ fireEvent
 https://testing-library.com/docs/guide-events/
 eventの操作はuserEventの使用を推奨している
 https://testing-library.com/docs/user-event/intro
+
+act
+https://testing-library.com/docs/preact-testing-library/api/#act
+
