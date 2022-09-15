@@ -4,27 +4,27 @@ import Dropzone from '.'
 import { theme } from 'themes'
 
 describe('Dropzone', () => {
-    let renderResult: RenderResult
-    let handleDrop: jest.Mock
-    
-    beforeEach(() => {
-        handleDrop = jest.fn()
-        renderResult = render(
-            <ThemeProvider theme={theme}>
-                <Dropzone onDrop={handleDrop} />
-            </ThemeProvider>
-        )
+  let renderResult: RenderResult
+  let handleDrop: jest.Mock
+
+  beforeEach(() => {
+    handleDrop = jest.fn()
+    renderResult = render(
+      <ThemeProvider theme={theme}>
+        <Dropzone onDrop={handleDrop} />
+      </ThemeProvider>,
+    )
+  })
+  afterEach(() => {
+    renderResult.unmount()
+  })
+  it('ファイルがドロップされたらonDropが呼ばれる', async () => {
+    const element = await screen.findByTestId('dropzone')
+    fireEvent.drop(element, {
+      dataTransfer: {
+        files: [new File(['(⌐□_□)'], 'chucknoris.png', { type: 'image/png' })],
+      },
     })
-    afterEach(() => {
-        renderResult.unmount()
-    })
-    it('ファイルがドロップされたらonDropが呼ばれる', async () => {
-        const element = await screen.findByTestId('dropzone')
-        fireEvent.drop(element, {
-            dataTransfer: {
-                files: [new File(['(⌐□_□)'], 'chucknoris.png', {type: 'image/png'})]
-            }
-        })
-        expect(handleDrop).toHaveBeenCalledTimes(1)
-    })
+    expect(handleDrop).toHaveBeenCalledTimes(1)
+  })
 })
