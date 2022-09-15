@@ -20,6 +20,12 @@ export default {
 
 https://typescriptbook.jp/reference/values-types-variables/type-assertion-as
 
+## env
+
+`env.process`でundefinedによりエラーが起きるケースの回避方法
+・変数末尾に!を与える（ビルドにより担保されている）
+
+https://zenn.dev/aktriver/articles/2022-04-nextjs-env
 
 # Storybook
 
