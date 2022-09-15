@@ -155,3 +155,6 @@ https://testing-library.com/docs/user-event/intro
 act
 https://testing-library.com/docs/preact-testing-library/api/#act
 
+## Log
+
+logflareについて学ぶ
