@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
@@ -26,6 +27,31 @@ const categoryNameDict: Record<Category, string> = {
 }
 
 const SearchPage: NextPage = () => {
+  const jsonld = {
+    '@context': 'https://schema.org/',
+    '@type:': 'BreadcrumbList',
+    name: 'パンくずリスト',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        item: { name: 'トップ', '@id': 'https://localhost:3000/' },
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        item: { name: '検索', '@id': 'https://localhost:3000/search' },
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        item: {
+          name: 'トップス',
+          '@id': 'https://localhost:3000/search/clothes',
+        },
+      },
+    ],
+  }
   const router = useRouter()
   // 商品のカテゴリーをクエリから取得
   const slug: Category[] = Array.isArray(router.query.slug)
@@ -54,6 +80,12 @@ const SearchPage: NextPage = () => {
 
   return (
     <Layout>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+        />
+      </Head>
       <Box
         paddingLeft={{
           base: 2,
