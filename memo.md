@@ -125,6 +125,24 @@ https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
 https://zenn.dev/terrierscript/articles/2021-04-29-next-js-props-catch-all-routes
 
+
+`req.connection.encrypted`について
+
+以下の記載があった。非推奨なモジュールがあった場合、代わりのモジュールは冒頭か@deprecatedで記載があるのか。
+```
+(property) IncomingMessage.connection: Socket
+Alias for message.socket.
+
+@since — v0.1.90
+
+@deprecated — Since v16.0.0 - Use socket.
+```
+
+`getServerSideProps`のreqには、nodejsと同様にrequestを持っている
+https://nextjs.org/docs/api-reference/data-fetching/get-server-side-props
+https://nodejs.org/api/http.html#http_class_http_incomingmessage
+
+
 # Test
 
 ## Jest
